@@ -10,8 +10,7 @@
     "LivingEntityMixin",
     "MagmaBlockMixin",
     "MobMixin",
-    "PlayerMixin",
-    "PowderSnowMixin"
+    "PlayerMixin"
   ],
   "client": [
   ],

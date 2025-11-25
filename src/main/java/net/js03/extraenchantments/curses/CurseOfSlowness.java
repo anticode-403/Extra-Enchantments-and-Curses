@@ -9,8 +9,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 
 public class CurseOfSlowness extends Enchantment {
-    public CurseOfSlowness(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, ExtraEnchantsMain.CONFIG.curseOfSlowness.target(), slotTypes);
+    public CurseOfSlowness() {
+        super(Rarity.RARE, EnchantmentTarget.ARMOR_FEET, new EquipmentSlot[]{EquipmentSlot.FEET});
     }
 
     @Override
@@ -25,32 +25,12 @@ public class CurseOfSlowness extends Enchantment {
 
     @Override
     public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.curseOfSlowness.isTreasure();
+        return true;
     }
 
     @Override
     public boolean isCursed() {
         return true;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.curseOfSlowness.maxLevel();
-    }
-
-    @Override
-    public boolean isAcceptableItem(ItemStack stack) {
-        return ConfigUtils.checkAcceptableItems("Slowness Curse", stack, target);
-    }
-
-    @Override
-    public boolean isAvailableForEnchantedBookOffer() {
-        return ExtraEnchantsMain.CONFIG.curseOfSlowness.isAvailableForEnchantedBookOffer();
-    }
-
-    @Override
-    public boolean isAvailableForRandomSelection() {
-        return ExtraEnchantsMain.CONFIG.curseOfSlowness.isAvailableForRandomSelection();
     }
 
     @Override

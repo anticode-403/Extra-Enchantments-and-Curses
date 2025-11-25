@@ -1,7 +1,5 @@
 package net.js03.extraenchantments.enchantments;
 
-import net.js03.extraenchantments.ExtraEnchantsMain;
-import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -11,19 +9,14 @@ import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.tag.DamageTypeTags;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 
 public class HealthForBlood extends Enchantment {
 
-    public HealthForBlood(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
-        super(weight, type, slotTypes);
+    public HealthForBlood() {
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -38,27 +31,7 @@ public class HealthForBlood extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.lifesteal.maxLevel();
-    }
-
-    @Override
-    public boolean isAcceptableItem(ItemStack stack) {
-        return ConfigUtils.checkAcceptableItems("Lifesteal", stack, target);
-    }
-
-    @Override
-    public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.lifesteal.isTreasure();
-    }
-
-    @Override
-    public boolean isAvailableForEnchantedBookOffer() {
-        return ExtraEnchantsMain.CONFIG.lifesteal.isAvailableForEnchantedBookOffer();
-    }
-
-    @Override
-    public boolean isAvailableForRandomSelection() {
-        return ExtraEnchantsMain.CONFIG.lifesteal.isAvailableForRandomSelection();
+        return 3;
     }
 
     @Override

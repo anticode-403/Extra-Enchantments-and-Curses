@@ -1,16 +1,13 @@
 package net.js03.extraenchantments.curses;
 
-import net.js03.extraenchantments.ExtraEnchantsMain;
-import net.js03.extraenchantments.config.ConfigUtils;
-import net.js03.extraenchantments.enchantments.Swiftness;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ItemStack;
 
 public class CurseOfFragility extends Enchantment {
-    public CurseOfFragility(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, ExtraEnchantsMain.CONFIG.curseOfFragility.target(), slotTypes);
+    public CurseOfFragility() {
+        super(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE, new EquipmentSlot[]{EquipmentSlot.LEGS});
     }
 
     @Override
@@ -25,21 +22,12 @@ public class CurseOfFragility extends Enchantment {
 
     @Override
     public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.curseOfFragility.isTreasure();
+        return true;
     }
 
     @Override
     public boolean isCursed() {
         return true;
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.curseOfFragility.maxLevel();
-    }
-
-    public boolean isAcceptableItem(ItemStack stack) {
-        return ConfigUtils.checkAcceptableItems("Fragility Curse", stack, target);
     }
 
     @Override

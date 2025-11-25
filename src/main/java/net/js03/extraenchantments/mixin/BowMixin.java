@@ -72,7 +72,7 @@ public abstract class BowMixin extends RangedWeaponItem implements Vanishable {
                         }
 
                         int z = EnchantmentHelper.getLevel(ExtraEnchantsMain.ECHO, stack);
-                        if (z > 0 && !ExtraEnchantsMain.CONFIG.echo.effectsDisabled()) {
+                        if (z > 0) {
                             wear = ThreadLocalRandom.current().nextInt(z, 8);
                             persistentProjectileEntity.setPierceLevel((byte) z);
                         }

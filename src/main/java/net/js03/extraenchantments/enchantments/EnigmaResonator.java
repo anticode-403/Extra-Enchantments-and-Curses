@@ -1,19 +1,12 @@
 package net.js03.extraenchantments.enchantments;
 
-import net.js03.extraenchantments.ExtraEnchantsMain;
-import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.DamageTypeTags;
 
 public class EnigmaResonator extends Enchantment {
-    public EnigmaResonator(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, ExtraEnchantsMain.CONFIG.enigmaResonator.target(), slotTypes);
+    public EnigmaResonator() {
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -28,32 +21,17 @@ public class EnigmaResonator extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.enigmaResonator.maxLevel();
+        return 3;
     }
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        return !(other instanceof PainCycle) && !(other instanceof HealthForBlood) && !(other instanceof Frenzy) && !(other instanceof GuardingStrike) && !(other instanceof SoulReaper);
-    }
-
-    @Override
-    public boolean isAcceptableItem(ItemStack stack) {
-        return ConfigUtils.checkAcceptableItems("Enigma Resonator", stack, target);
+        return !(other instanceof PainCycle) && !(other instanceof HealthForBlood) && !(other instanceof SoulReaper);
     }
 
     @Override
     public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.enigmaResonator.isTreasure();
-    }
-
-    @Override
-    public boolean isAvailableForEnchantedBookOffer() {
-        return ExtraEnchantsMain.CONFIG.enigmaResonator.isAvailableForEnchantedBookOffer();
-    }
-
-    @Override
-    public boolean isAvailableForRandomSelection() {
-        return ExtraEnchantsMain.CONFIG.enigmaResonator.isAvailableForRandomSelection();
+        return false;
     }
 
     //    @Override

@@ -59,7 +59,7 @@ public abstract class ItemStackMixin {
                 amount -= j;
 
                 int z = EnchantmentHelper.getLevel(ExtraEnchantsMain.CURSE_OF_FRAGILITY, ((ItemStack) (Object) this));
-                if (z > 0 && !ExtraEnchantsMain.CONFIG.curseOfFragility.effectsDisabled()) {
+                if (z > 0) {
                     amount += ThreadLocalRandom.current().nextInt(0, 34);
                 }
 

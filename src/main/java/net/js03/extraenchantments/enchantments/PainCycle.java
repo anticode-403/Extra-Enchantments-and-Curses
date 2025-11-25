@@ -1,28 +1,15 @@
 package net.js03.extraenchantments.enchantments;
 
-import net.js03.extraenchantments.ExtraEnchantsMain;
-import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.boss.dragon.EnderDragonEntity;
-import net.minecraft.entity.mob.*;
-import net.minecraft.entity.passive.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.tag.DamageTypeTags;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 
 public class PainCycle extends Enchantment {
 
     private int hits;
 
-    public PainCycle(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
-        super(weight, type, slotTypes);
+    public PainCycle() {
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         hits = 0;
     }
 
@@ -38,32 +25,7 @@ public class PainCycle extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.painCycle.maxLevel();
-    }
-
-    @Override
-    protected boolean canAccept(Enchantment other) {
-        return !(other instanceof Frenzy) && !(other instanceof HealthForBlood) && !(other instanceof GuardingStrike);
-    }
-
-    @Override
-    public boolean isAcceptableItem(ItemStack stack) {
-        return ConfigUtils.checkAcceptableItems("Pain Cycle", stack, target);
-    }
-
-    @Override
-    public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.painCycle.isTreasure();
-    }
-
-    @Override
-    public boolean isAvailableForEnchantedBookOffer() {
-        return ExtraEnchantsMain.CONFIG.painCycle.isAvailableForEnchantedBookOffer();
-    }
-
-    @Override
-    public boolean isAvailableForRandomSelection() {
-        return ExtraEnchantsMain.CONFIG.painCycle.isAvailableForRandomSelection();
+        return 1;
     }
 
     //    @Override

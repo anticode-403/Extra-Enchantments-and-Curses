@@ -1,7 +1,5 @@
 package net.js03.extraenchantments.enchantments;
 
-import net.js03.extraenchantments.ExtraEnchantsMain;
-import net.js03.extraenchantments.config.ConfigUtils;
 import net.minecraft.block.*;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -9,8 +7,6 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.fluid.LavaFluid;
-import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -18,15 +14,12 @@ import net.minecraft.world.World;
 
 public class HellWalker extends Enchantment {
 
-    public HellWalker(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, ExtraEnchantsMain.CONFIG.hellwalker.target(), slotTypes);
+    public HellWalker() {
+        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_FEET, new EquipmentSlot[]{EquipmentSlot.FEET});
     }
 
     @Override
     public int getProtectionAmount(int level, DamageSource source) {
-        if (ExtraEnchantsMain.CONFIG.hellwalker.effectsDisabled()) {
-            return 0;
-        }
         return source.isIn(DamageTypeTags.IS_FIRE) ? 12 : 0;
     }
 
@@ -39,26 +32,7 @@ public class HellWalker extends Enchantment {
     }
 
     public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.hellwalker.isTreasure();
-    }
-
-    @Override
-    public boolean isAvailableForEnchantedBookOffer() {
-        return ExtraEnchantsMain.CONFIG.hellwalker.isAvailableForEnchantedBookOffer();
-    }
-
-    @Override
-    public boolean isAvailableForRandomSelection() {
-        return ExtraEnchantsMain.CONFIG.hellwalker.isAvailableForRandomSelection();
-    }
-
-    public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.hellwalker.maxLevel();
-    }
-
-    @Override
-    public boolean isAcceptableItem(ItemStack stack) {
-        return ConfigUtils.checkAcceptableItems("Hellwalker", stack, target);
+        return true;
     }
 
     public static void freezeLava(LivingEntity entity, World world, BlockPos blockPos) {

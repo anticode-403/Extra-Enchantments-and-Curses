@@ -29,9 +29,7 @@ public class MagmaBlockMixin extends Block {
             if (!entity.bypassesSteppingEffects() && !EnchantmentHelper.hasFrostWalker((LivingEntity) entity) && EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, (LivingEntity) entity) <= 0) {
                 entity.damage(world.getDamageSources().hotFloor(), 1.0f);
             } else if (EnchantmentHelper.getEquipmentLevel(ExtraEnchantsMain.HELLWALKER, (LivingEntity) entity) != 0) {
-                if (ExtraEnchantsMain.CONFIG.hellwalker.effectsDisabled()) {
-                    entity.damage(world.getDamageSources().hotFloor(), 1.0f);
-                }
+                entity.damage(world.getDamageSources().hotFloor(), 1.0f);
             }
         }
         super.onSteppedOn(world, pos, state, entity);

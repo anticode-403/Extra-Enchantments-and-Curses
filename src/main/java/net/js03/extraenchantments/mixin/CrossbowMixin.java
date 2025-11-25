@@ -22,15 +22,8 @@ public abstract class CrossbowMixin extends RangedWeaponItem implements Vanishab
     private static void createArrow(World world, LivingEntity entity, ItemStack crossbow, ItemStack arrow, CallbackInfoReturnable<PersistentProjectileEntity> cir) {
         // Incandescent
         int i = EnchantmentHelper.getLevel(ExtraEnchantsMain.HOT_SHOT, crossbow);
-        if (i > 0 && !ExtraEnchantsMain.CONFIG.incandescent.effectsDisabled()) {
+        if (i > 0) {
             cir.getReturnValue().setOnFireFor(100);
-        }
-
-        // Supercharge
-        int j = EnchantmentHelper.getLevel(ExtraEnchantsMain.SUPERCHARGE, crossbow);
-        if (j > 0 && !ExtraEnchantsMain.CONFIG.supercharge.effectsDisabled()) {
-            cir.getReturnValue().setDamage(cir.getReturnValue().getDamage() + (double) j * 0.5 + 0.5);
-            cir.getReturnValue().setPunch(j / 2);
         }
     }
 }

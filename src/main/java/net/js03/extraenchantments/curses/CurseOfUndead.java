@@ -6,8 +6,8 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
 
 public class CurseOfUndead extends Enchantment {
-    public CurseOfUndead(Rarity weight, EquipmentSlot[] slotTypes) {
-        super(weight, ExtraEnchantsMain.CONFIG.curseOfUndead.target(), slotTypes);
+    public CurseOfUndead() {
+        super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[]{EquipmentSlot.HEAD});
     }
 
     @Override
@@ -23,11 +23,7 @@ public class CurseOfUndead extends Enchantment {
         return 50;
     }
 
-    public int getMaxLevel() {
-        return ExtraEnchantsMain.CONFIG.curseOfUndead.maxLevel();
-    }
-
     public boolean isTreasure() {
-        return ExtraEnchantsMain.CONFIG.curseOfUndead.isTreasure();
+        return true;
     }
 }
